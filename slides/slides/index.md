@@ -1,152 +1,189 @@
-- title : FsReveal
-- description : Introduction to FsReveal
-- author : Karlkim Suwanmongkol
+- title : Introduction to WebSharper
+- author : Adam Granicz
 - theme : night
 - transition : default
 
 ***
 
-### What is FsReveal?
+## Introduction to<br/> [WebSharper Warp](https://github.com/intellifactory/websharper.warp)
 
-- Generates [reveal.js](http://lab.hakim.se/reveal-js/#/) presentation from [markdown](http://daringfireball.net/projects/markdown/)
-- Utilizes [FSharp.Formatting](https://github.com/tpetricek/FSharp.Formatting) for markdown parsing
-- Get it from [http://fsprojects.github.io/FsReveal/](http://fsprojects.github.io/FsReveal/)
+<img src="images/warp.jpg" style="width:50%;" />
 
-![FsReveal](images/logo.png)
-
-***
-
-### Reveal.js
-
-- A framework for easily creating beautiful presentations using HTML.
-
-
-> **Atwood's Law**: any application that can be written in JavaScript, will eventually be written in JavaScript.
+Adam Granicz, [IntelliFactory](http://intellifactory.com) <br/>
+[@granicz](https://twitter.com/granicz) | [intellifactory.com](http://intellifactory.com) | [websharper.com](http://websharper.com)
 
 ***
 
-### FSharp.Formatting
+### IntelliFactory
 
-- F# tools for generating documentation (Markdown processor and F# code formatter).
-- It parses markdown and F# script file and generates HTML or PDF.
-- Code syntax highlighting support.
-- It also evaluates your F# code and produce tooltips.
+<img src="images/IntelliFactory.png" style="width:75%;" />
+
+---
+
+ * Headquarter in Budapest, Hungary
+ * 6 developers, 1 office manager, 1-2 interns
+ * Founded in 2004, the first F# company
+
+---
+
+#### F# **custom development**
+
+ * 280+ F# source repositories, [~60 open source](http://github.com/IntelliFactory)
+ * One of the largest F# code bases around
+ * 30+ of commercial applications built
+
+---
+
+#### F# **consulting** and **trainings**
+
+ * Onsite
+ * Online (coming soon)
+
+---
+
+#### We create **web** and **cloud technologies** for developers
+
+ * [WebSharper stack](http://websharper.com) (~50 libraries)
+ * [CloudSharper](http://cloudsharper.com)
+ * CloudSharper-based applications
+
+---
+
+#### **Research**
+
+ * Functional and reactive programming
+   * UI.Next
+ * Functional UI specification
+   * Formlets, Flowlets, Piglets, UI.Next
 
 ***
 
-### Syntax Highlighting
+### [WebSharper](http://websharper.com)
 
-#### F# (with tooltips)
+#### An F# web ecosystem
 
-    let a = 5
-    let factorial x = [1..x] |> List.reduce (*)
-    let c = factorial a
+<img src="images/logo-websharper-icon.png" style="border-style:none;width:128px;" />
 
 ---
 
-#### C#
+#### F# to JS compiler + Web abstractions
 
-    [lang=cs]
-    using System;
-
-    class Program
-    {
-        static void Main()
-        {
-            Console.WriteLine("Hello, world!");
-        }
-    }
+ * Pagelets
+ * Sitelets
+ * Formlets and flowlets
+ * Piglets
+ * UI.Next
 
 ---
 
-#### JavaScript
+#### Extensions
 
-    [lang=js]
-    function copyWithEvaluation(iElem, elem) {
-        return function (obj) {
-            var newObj = {};
-            for (var p in obj) {
-                var v = obj[p];
-                if (typeof v === "function") {
-                    v = v(iElem, elem);
-                }
-                newObj[p] = v;
-            }
-            if (!newObj.exactTiming) {
-                newObj.delay += exports._libraryDelay;
-            }
-            return newObj;
-        };
-    }
+~50 extensions to various JavaScript libraries
 
+ * Core: JQuery, EcmaScript, WebGL
+ * Visualization: Google Visualization, D3, Raphael, Protovis, etc.
+ * Charting: Highcharts, Chart.js, etc.
+ * GIS: Google Maps, Bing Maps, Leaflet.js
+ * Mobile: jQuery Mobile, Sencha Touch, Kendo Mobile
+ * ...
 
 ---
 
-#### Haskell
- 
-    [lang=haskell]
-    recur_count k = 1 : 1 : 
-        zipWith recurAdd (recur_count k) (tail (recur_count k))
-            where recurAdd x y = k * x + y
+#### New extensions
 
-    main = do
-      argv <- getArgs
-      inputFile <- openFile (head argv) ReadMode
-      line <- hGetLine inputFile
-      let [n,k] = map read (words line)
-      printf "%d\n" ((recur_count k) !! (n-1))
+You can implement your own extension:
 
-*code from [NashFP/rosalind](https://github.com/NashFP/rosalind/blob/master/mark_wutka%2Bhaskell/FIB/fib_ziplist.hs)*
-
----
-
-### SQL
-
-    [lang=sql]
-    select *
-    from
-    (select 1 as Id union all select 2 union all select 3) as X
-    where Id in (@Ids1, @Ids2, @Ids3)
-
-*sql from [Dapper](https://code.google.com/p/dapper-dot-net/)*
-
----
-
-### C/AL
-
-    [lang=cal]
-    PROCEDURE FizzBuzz(n : Integer) r_Text : Text[1024];
-    VAR
-      l_Text : Text[1024];
-    BEGIN
-      r_Text := '';
-      l_Text := FORMAT(n);
-
-      IF (n MOD 3 = 0) OR (STRPOS(l_Text,'3') > 0) THEN
-        r_Text := 'Fizz';
-      IF (n MOD 5 = 0) OR (STRPOS(l_Text,'5') > 0) THEN
-        r_Text := r_Text + 'Buzz';
-      IF r_Text = '' THEN
-        r_Text := l_Text;
-    END;
+ * manually (via JavaScript inlines)
+ * using [WIG](http://websharper.com/docs/wig)
+ * importing TypeScript declarations
 
 ***
 
-**Bayes' Rule in LaTeX**
+### [WebSharper Warp](https://github.com/IntelliFactory/websharper.warp)
 
-$ \Pr(A|B)=\frac{\Pr(B|A)\Pr(A)}{\Pr(B|A)\Pr(A)+\Pr(B|\neg A)\Pr(\neg A)} $
+#### A library for creating scripted and self-hosted client-server applications in F#.
+
+> Warp is a set of shorthands to get started more easily with WebSharper.
+
+---
+
+### Installation
+
+	Install-Package WebSharper.Warp
+
+or if you use [paket](http://fsprojects.github.io/Paket)
+
+	paket init
+	paket add nuget WebSharper.Warp
+
+---
+
+### Hello World!
+
+	open WebSharper
+	
+	let MyApp = Warp.Text "Hello world!"
+	
+	[<EntryPoint>]
+	do Warp.RunAndWaitForInput(MyApp) |> ignore
+
+---
+
+### Single-Page Applications
+
+	open WebSharper.Html.Server
+	
+	let MySite =
+	    Warp.CreateSPA (fun ctx ->
+	        [H1 [Text "Hello world!"]])
+	
+	[<EntryPoint>]
+	do Warp.RunAndWaitForInput(MySite) |> ignore
+
+---
+
+### Multi-Page Applications
+
+	type Endpoints =
+	    | [<EndPoint "GET /">] Home
+	    | [<EndPoint "GET /about">] About
+
+	let MySite =
+	    Warp.CreateApplication (fun ctx endpoint ->
+	        match endpoint with
+	        | Endpoints.Home ->
+	            Warp.Page(...)
+	        | Endpoints.About ->
+	            Warp.Page(...)
+	    )
+	
+	[<EntryPoint>]
+
+	do Warp.RunAndWaitForInput(MySite) |> ignore
+***
+
+### Coding
 
 ***
 
-### The Reality of a Developer's Life 
+### Coding 2
 
-**When I show my boss that I've fixed a bug:**
-  
-![When I show my boss that I've fixed a bug](http://www.topito.com/wp-content/uploads/2013/01/code-07.gif)
-  
-**When your regular expression returns what you expect:**
-  
-![When your regular expression returns what you expect](http://www.topito.com/wp-content/uploads/2013/01/code-03.gif)
-  
-*from [The Reality of a Developer's Life - in GIFs, Of Course](http://server.dzone.com/articles/reality-developers-life-gifs)*
+***
 
+### Conclusions
+
+F# is a great choice for web application developers.
+
+WebSharper automates many of the typical web chores, and
+makes development more robust, more concise, and more fun.
+
+WebSharper Warp makes it easy to get started.
+
+***
+
+### Thanks for listening!
+
+Get in touch!
+
+Adam Granicz, [IntelliFactory](http://intellifactory.com) <br/>
+[@granicz](https://twitter.com/granicz) | [intellifactory.com](http://intellifactory.com) | [websharper.com](http://websharper.com)
