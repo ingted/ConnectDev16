@@ -5,7 +5,7 @@
 
 ***
 
-## Introduction to<br/> [WebSharper Warp](https://github.com/intellifactory/websharper.warp)
+## Introduction to<br/> [WebSharper](https://github.com/intellifactory/websharper)
 
 <img src="images/warp.jpg" style="width:50%;" />
 
