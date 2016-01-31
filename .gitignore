@@ -7,3 +7,8 @@ tools/packages/
 **/Content/
 **/Scripts/
 .vs/
+paket.exe
+!packages/*/build/
+.fake/
+*.svclog
+output/
