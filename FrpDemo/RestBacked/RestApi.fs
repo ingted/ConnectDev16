@@ -1,4 +1,4 @@
-namespace RestBacked
+namespace RestBackend
 
 open System
 open System.Collections.Generic

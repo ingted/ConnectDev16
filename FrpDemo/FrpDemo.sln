@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "RestBacked", "RestBacked\RestBacked.fsproj", "{DAAC2314-D21D-47C5-97D2-AAF65BF4DBE5}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "RestBackend", "RestBacked\RestBackend.fsproj", "{DAAC2314-D21D-47C5-97D2-AAF65BF4DBE5}"
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "ClientOnly", "ClientOnly\ClientOnly.fsproj", "{BD08DB28-FC37-41C9-B7B3-53C6B8FB378E}"
 EndProject

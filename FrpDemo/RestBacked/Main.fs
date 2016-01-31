@@ -1,4 +1,4 @@
-namespace RestBacked
+namespace RestBackend
 
 open WebSharper
 open WebSharper.Sitelets
@@ -20,23 +20,9 @@ module Site =
             ]
         )
 
+    [<Website>]
     let Main =
         Sitelet.Sum [
             Sitelet.Content "/" Home HomePage
             Sitelet.Shift "api" (Sitelet.EmbedInUnion <@ Api @> RestApi.Sitelet)
         ]
-
-[<Sealed>]
-type Website() =
-    interface IWebsite<Action> with
-        member this.Sitelet = Site.Main
-        member this.Actions = [Home]
-
-type Global() =
-    inherit System.Web.HttpApplication()
-
-    member g.Application_Start(sender: obj, args: System.EventArgs) =
-        ()
-
-[<assembly: Website(typeof<Website>)>]
-do ()
