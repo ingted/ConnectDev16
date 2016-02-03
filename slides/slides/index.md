@@ -1,183 +1,99 @@
-- title : Introduction to WebSharper
+- title : Creating Functional, Reactive F# Web Applications with WebSharper
 - author : Adam Granicz
 - theme : night
 - transition : default
 
 ***
-
-## Introduction to<br/> [WebSharper](https://github.com/intellifactory/websharper)
-
-<img src="images/warp.jpg" style="width:50%;" />
-
-Adam Granicz, [IntelliFactory](http://intellifactory.com) <br/>
-[@granicz](https://twitter.com/granicz) | [intellifactory.com](http://intellifactory.com) | [websharper.com](http://websharper.com)
-
-***
-
-### IntelliFactory
-
-<img src="images/IntelliFactory.png" style="width:75%;" />
-
----
-
- * Headquarter in Budapest, Hungary
- * 6 developers, 1 office manager, 1-2 interns
- * Founded in 2004, the first F# company
-
----
-
-#### F# **custom development**
-
- * 280+ F# source repositories, [~60 open source](http://github.com/IntelliFactory)
- * One of the largest F# code bases around
- * 30+ of commercial applications built
-
----
-
-#### F# **consulting** and **trainings**
-
- * Onsite
- * Online (coming soon)
-
----
-
-#### We create **web** and **cloud technologies** for developers
-
- * [WebSharper stack](http://websharper.com) (~50 libraries)
- * [CloudSharper](http://cloudsharper.com)
- * CloudSharper-based applications
-
----
-
-#### **Research**
-
- * Functional and reactive programming
-   * UI.Next
- * Functional UI specification
-   * Formlets, Flowlets, Piglets, UI.Next
-
-***
-
-### [WebSharper](http://websharper.com)
-
-#### An F# web ecosystem
+## WebSharper code samples
 
 <img src="images/logo-websharper-icon.png" style="border-style:none;width:128px;" />
 
----
-
-#### F# to JS compiler + Web abstractions
-
- * Pagelets
- * Sitelets
- * Formlets and flowlets
- * Piglets
- * UI.Next
-
----
-
-#### Extensions
-
-~50 extensions to various JavaScript libraries
-
- * Core: JQuery, EcmaScript, WebGL
- * Visualization: Google Visualization, D3, Raphael, Protovis, etc.
- * Charting: Highcharts, Chart.js, etc.
- * GIS: Google Maps, Bing Maps, Leaflet.js
- * Mobile: jQuery Mobile, Sencha Touch, Kendo Mobile
- * ...
-
----
-
-#### New extensions
-
-You can implement your own extension:
-
- * manually (via JavaScript inlines)
- * using [WIG](http://websharper.com/docs/wig)
- * importing TypeScript declarations
+[IntelliFactory](http://intellifactory.com) <br/>
+[intellifactory.com](http://intellifactory.com) | [websharper.com](http://websharper.com)
 
 ***
 
-### [WebSharper Warp](https://github.com/IntelliFactory/websharper.warp)
+### Getting Started
 
-#### A library for creating scripted and self-hosted client-server applications in F#.
+#### [Working with data](http://try.websharper.com/snippet/adam.granicz/00003p)
 
-> Warp is a set of shorthands to get started more easily with WebSharper.
-
----
-
-### Installation
-
-	Install-Package WebSharper.Warp
-
-or if you use [paket](http://fsprojects.github.io/Paket)
-
-	paket init
-	paket add nuget WebSharper.Warp
-
----
-
-### Hello World!
-
-	open WebSharper
-	
-	let MyApp = Warp.Text "Hello world!"
-	
-	[<EntryPoint>]
-	do Warp.RunAndWaitForInput(MyApp) |> ignore
-
----
-
-### Single-Page Applications
-
-	open WebSharper.Html.Server
-	
-	let MySite =
-	    Warp.CreateSPA (fun ctx ->
-	        [H1 [Text "Hello world!"]])
-	
-	[<EntryPoint>]
-	do Warp.RunAndWaitForInput(MySite) |> ignore
-
----
-
-### Multi-Page Applications
-
-	type Endpoints =
-	    | [<EndPoint "GET /">] Home
-	    | [<EndPoint "GET /about">] About
-
-	let MySite =
-	    Warp.CreateApplication (fun ctx endpoint ->
-	        match endpoint with
-	        | Endpoints.Home ->
-	            Warp.Page(...)
-	        | Endpoints.About ->
-	            Warp.Page(...)
-	    )
-	
-	[<EntryPoint>]
-
-	do Warp.RunAndWaitForInput(MySite) |> ignore
-***
-
-### Coding
+<img src="http://try.websharper.com/snippet-thumbnails/00003p.png" style="border-style:none;width:250px" />
 
 ***
 
-### Coding 2
+### Pagelets
 
 ***
 
-### Conclusions
+### Sitelets
 
-F# is a great choice for web application developers.
+See examples in the [course repository](http://github.com/IntelliFactory/ConnectDev16).
 
-WebSharper automates many of the typical web chores, and
-makes development more robust, more concise, and more fun.
+***
 
-WebSharper Warp makes it easy to get started.
+### UI.Next
+
+#### [Mapping the view of a simple reactive variable](http://try.websharper.com/snippet/adam.granicz/00003N)
+
+<img src="http://try.websharper.com/snippet-thumbnails/00003N.png" style="border-style:none;width:250px" />
+
+---
+
+#### [Reactive input](http://try.websharper.com/snippet/adam.granicz/00001u)
+
+<img src="http://try.websharper.com/snippet-thumbnails/00001u.png" style="border-style:none;width:250px" />
+
+---
+
+#### [Reactive templates](http://try.websharper.com/example/todo-list)
+
+<img src="http://try.websharper.com/example/todo-list/icon.png" style="border-style:none;width:250px" />
+
+---
+
+#### [Reactive "sitelets"](http://try.websharper.com/snippet/qwe2/000034)
+
+<img src="http://try.websharper.com/snippet-thumbnails/000034.png" style="border-style:none;width:250px" />
+
+***
+
+### Formlets
+
+#### [Simple formlet](http://try.websharper.com/snippet/adam.granicz/00003G)
+
+<img src="http://try.websharper.com/snippet-thumbnails/00003G.png" style="border-style:none;width:250px" />
+
+---
+
+#### [Reactive formlet](http://try.websharper.com/snippet/adam.granicz/00003P)
+
+<img src="http://try.websharper.com/snippet-thumbnails/00003P.png" style="border-style:none;width:250px" />
+
+***
+
+### Piglets
+
+#### [Simple piglet](http://try.websharper.com/snippet/adam.granicz/00004P)
+
+<img src="http://try.websharper.com/snippet-thumbnails/00004P.png" style="border-style:none;width:250px" />
+
+---
+
+#### [WebSharper.Forms](http://try.websharper.com/snippet/adam.granicz/00004Q)
+
+<img src="http://try.websharper.com/snippet-thumbnails/00004Q.png" style="border-style:none;width:250px" />
+
+---
+
+#### [WebSharper.Forms.Bootstrap](http://try.websharper.com/snippet/adam.granicz/00004x)
+
+<img src="http://try.websharper.com/snippet-thumbnails/00004x.png" style="border-style:none;width:250px" />
+
+***
+
+### [Atom integration for WebSharper](https://atom.io/packages/ionide-websharper)
+
+<img src="https://i.github-camo.com/745c2143950038c1cf8bf38e0ae1f230e72b6567/687474703a2f2f692e696d6775722e636f6d2f757732306e49662e676966" style="border-style:none;width:75%" />
 
 ***
 
